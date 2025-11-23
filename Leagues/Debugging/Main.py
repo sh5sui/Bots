@@ -42,10 +42,16 @@ async def links(interaction: discord.Interaction):
 )
 async def freeagency(interaction: discord.Interaction, position: str, region: str):
     freeagentchannel = bot.get_channel(1387870667411558561)
+    if freeagentchannel is None:
+        await interaction.response.send_message("Free agency channel could not be found.", ephemeral=True)
+        return
+    
     user_id = interaction.user.id
+
     await interaction.response.send_message("Free agency post sent!", ephemeral=True)
+
     embed = discord.Embed(title="Free Agent", color=discord.Color.blue())
-    embed.add_field(user="User", value=user_id)
+    embed.add_field(name="User", value=f"<@{user_id}>")
     embed.add_field(name="Position", value=position)
     embed.add_field(name="Region", value=region)
 
