@@ -71,16 +71,14 @@ async def links(interaction: discord.Interaction):
     await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/4886147037/UFA-Universe\n*Others*: Coming soon")
 
 @bot.tree.command(name="purge")
-async def purge(interaction: discord.Interaction, amount: int = None):
-    if amount is None:
-        await interaction.response.send_message("Amount cannot be 0")
-        return
+async def purge(interaction: discord.Interaction, amount: int):
 
-    if interaction.author.guild_permissions.manage_messages:
-        await interaction.channel.purge(limit=amount)
-        await interaction.response.send_message(f"Deleted {amount} message.", delete_after=5)
-    else:
+    if not interaction.user.guild_permissions.manage_messages:
         await interaction.response.send_message("You don't have permission to run this command.")
+        return
+    
+    deleted = await interaction.channel.purge(limit=amount)
+    await interaction.response.send_message(f"Deleted {len(deleted)} messages.", ephemeral=True, delete_after=5)
 
 # TODO:: Add functionality to this command
 @bot.tree.command(name="contract")
