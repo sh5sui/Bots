@@ -44,11 +44,50 @@ async def serverinfo(interaction: discord.Interaction):
 
     await interaction.response.send_message(embed=embed)
 
+@bot.tree.command(name="userinfo")
+async def userinfo(interaction: discord.Interaction, user: discord.Member = None):
+    if user is None:
+        await interaction.response.send_message("User cannot be empty!", ephemeral=True)
+        return
+    
+    user_id = interaction.user.id
+
+    roles_display = ", ".join([role.mention for role in user.roles if role.name != "@everyone"])
+    if not roles_display:
+        roles_display = "No roles to display"
+
+    embed = discord.Embed(title="User Information", color=discord.Color.purple())
+    embed.set_thumbnail(url=user.avatar.url)
+    embed.add_field(name="Requested By,", value=f"<@{user_id}>")
+    embed.add_field(name="Username", value=str(user))
+    embed.add_field(name="User ID", value=user.id)
+    embed.add_field(name="Roles", value=roles_display)
+
+    await interaction.response.send_message(embed=embed)
+
 @bot.tree.command(name="links")
 async def links(interaction: discord.Interaction):
-    await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/137624913542642\n*Others*: Coming soon")
+    await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/4886147037/UFA-Universe\n*Others*: Coming soon")
 
-# TODO:: Make this an embed
+# TODO:: Add functionality to this command
+@bot.tree.command(name="contract")
+@app_commands.describe(
+    team="What team you want to sign them to"
+)
+async def contract(interaction: discord.Intereaction, team: str, user: discord.Member = None):
+    contractchannel = bot.get_channel(1387870804225687764)
+    if contractchannel is None:
+        await interaction.response.send_message("Contract's channel couldn't be found.", ephemeral=True)
+        return
+    
+    user_id = interaction.user.id
+
+    await interaction.responce.send_message("Contract was sent to", f"<@{user}>")
+
+    embed = discord.Embed(title="Contract", color=discord.Color.green())
+
+    await contractchannel.send(embed=embed)
+
 @bot.tree.command(name="freeagency")
 @app_commands.describe(
     position="Your position",
