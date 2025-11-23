@@ -34,6 +34,7 @@ async def serverinfo(interaction: discord.Interaction):
 async def links(interaction: discord.Interaction):
     await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/137624913542642\n*Others*: Coming soon")
 
+# TODO:: Make this an embed
 @bot.tree.command(name="freeagency")
 @app_commands.describe(
     position="Your position",
@@ -43,7 +44,12 @@ async def freeagency(interaction: discord.Interaction, position: str, region: st
     freeagentchannel = bot.get_channel(1387870667411558561)
     user_id = interaction.user.id
     await interaction.response.send_message("Free agency post sent!", ephemeral=True)
-    await freeagentchannel.send(f"<@{user_id}> is a free agent! Position: {position}, Region: {region}")
+    embed = discord.Embed(title="Free Agent", color=discord.Color.blue())
+    embed.add_field(user="User", value=user_id)
+    embed.add_field(name="Position", value=position)
+    embed.add_field(name="Region", value=region)
+
+    await freeagentchannel.send(embed=embed)
 
 @bot.event
 async def on_message(message):
