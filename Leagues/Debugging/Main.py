@@ -6,6 +6,8 @@ import logging
 from discord import app_commands
 from discord import guild
 import asyncio
+from roquick_api import RoQuick, RoQuickError
+import traceback
 
 load_dotenv()
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -18,14 +20,26 @@ intents.presences = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-freeagentchannel_id = 1387870667411558561
-friendlieschannel_id = 1387782160697655409
-contractschannel_id = 1387870804225687764
+roquick = RoQuick({
+    "apiKey": os.getenv("ROQUICK_API_KEY"),
+    "openCloudKey": os.getenv("ROQUICK_CLOUD_KEY")
+})
 
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
     await bot.tree.sync()
+
+@bot.event
+async def on_member_join(member):
+    communityrole = 1196067498504761364
+    role = member.guild.get_role(communityrole)
+
+    if role:
+        await member.add_roles(role)
+        print(f"Added community role to {member.name}")
+    else:
+        print(f"Community role not found!")
 
 # TODO:: Give this command functionality to fetch server info as an embed.
 @bot.tree.command(name="serverinfo")
@@ -44,6 +58,53 @@ async def serverinfo(interaction: discord.Interaction):
     embed.add_field(name="Creation Date", value=guild.created_at)
 
     await interaction.response.send_message(embed=embed)
+
+@bot.tree.command(name="commands")
+async def commands(interaction: discord.Interaction):
+
+    user_id = interaction.user.id
+
+    embed = discord.Embed(title="Commands", color=discord.Color.purple)
+    embed.set_thumbnail(url=guild.icon.url)
+    embed.add_field(name="Requested By", value=f"<@{user_id}>", inline=True)
+    embed.add_field(name="User Info", value="Displays the information for a user.", inline=True)
+    embed.add_field(name="Server Info", value="Displays information about the server.", inline=True)
+    embed.add_field(name="Free Agency", value="Sends a free agency request.", inline=True)
+    embed.add_field(name="Links", value="Shows all links such as group, hub, etc.", inline=True)
+    embed.add_field(name="**PERMISSIONS REQUIRED**", inline=True)
+    embed.add_field(name="Purge", value="Deletes a certain amount of messages in bulk.", inline=True)
+    embed.add_field(name="Contract", value="Sends a contract to a certain person", inline=True)
+    embed.add_field(name="Accept", value="Accepts a person into the roblox group.", inline=True)
+
+    await interaction.respond.sent_message(embed=embed)
+
+@bot.tree.command(name="accept")
+async def accept(interaction: discord.Interaction, user_id: int):
+    await interaction.response.defer(ephemeral=False)
+
+    user = interaction.user
+    if not any(role.name == "Whitelisted" for role in user.roles):
+        await interaction.followup.send("You don't have permission to run this command.", ephemeral=True)
+        return
+
+    group_id = 5947860
+    admin_id = interaction.user.id
+    guild = interaction.guild
+
+    try:
+        result = roquick.accept_join_request(group_id, user_id)
+
+        embed = discord.Embed(title="Group Request", color=discord.Color.green())
+        embed.set_thumbnail(url=guild.icon.url)
+        embed.add_field(name="Staff", value=f"<@{admin_id}>")
+        embed.add_field(name="Response", value=f"In relation to a group request created by {user_id}, your group request was accepted.")
+
+        await interaction.followup.send(embed=embed, ephemeral=False)
+
+    except RoQuickError as e:
+        await interaction.followup.send(f"API Error: {e.message}", ephemeral=True)
+    except Exception as e:
+        await interaction.followup.send(f"Unexpected Error: {e}", ephemeral=True)
 
 @bot.tree.command(name="userinfo")
 async def userinfo(interaction: discord.Interaction, user: discord.Member = None):
