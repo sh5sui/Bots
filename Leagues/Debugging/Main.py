@@ -101,11 +101,14 @@ async def contract(interaction: discord.Interaction, team: discord.Role = None, 
 
     manager = interaction.user
 
-    if not any(role.name in ["Manager", "Assistant Manager"] for role in manager.roles):
+    if not any(role.name in ["Team Manager", "Team Assistant"] for role in manager.roles):
         await interaction.response.send_message("You don't have permission to run this command.", ephemeral=True)
         return
-    if not any(role.name == {team} for role in manager.roles):
+    if team not in manager.roles:
         await interaction.response.send_message("You cannot sign a player to a team you aren't in.", ephemeral=True)
+        return
+    if team in user.roles:
+        await interaction.response.send_message("User is already signed to this team!", ephemeral=True)
         return
 
     await interaction.response.send_message(f"Contract was sent to {user.mention}!", ephemeral=True)
