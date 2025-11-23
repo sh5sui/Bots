@@ -26,5 +26,9 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
+@client.tree.command(name="serverinfo")
+async def serverinfo(interaction: discord.Interaction):
+    await interaction.response.send_message("This command is under development.")
+
 Token = os.getenv("Token", log_Handler=handler)
 client.run(Token)
