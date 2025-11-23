@@ -77,7 +77,7 @@ import asyncio
 @app_commands.describe(
     team="What team you want to sign them to"
 )
-async def contract(interaction: discord.Interaction, team: str, user: discord.Member = None):
+async def contract(interaction: discord.Interaction, team: discord.Role = None, user: discord.Member = None):
     if user is None:
         await interaction.response.send_message("You must specify a player!", ephemeral=True)
         return
@@ -89,15 +89,15 @@ async def contract(interaction: discord.Interaction, team: str, user: discord.Me
 
     manager = interaction.user
 
-    # Check if user has the Manager role
     if not any(role.name in ["Manager", "Assistant Manager"] for role in manager.roles):
         await interaction.response.send_message("You don't have permission to run this command.", ephemeral=True)
         return
+    if not any(role.name == {team} for role in manager.roles):
+        await interaction.response.send_message("You cannot sign a player to a team you aren't in.", ephemeral=True)
+        return
 
-    # Confirm to manager
     await interaction.response.send_message(f"Contract was sent to {user.mention}!", ephemeral=True)
 
-    # Create embed
     embed = discord.Embed(title="Contract", color=discord.Color.green())
     embed.add_field(name="Team", value=team)
     embed.add_field(name="Manager", value=manager.mention)
@@ -107,13 +107,10 @@ async def contract(interaction: discord.Interaction, team: str, user: discord.Me
         value="By accepting this contract, you hereby accept the fair play rules of the UFA league and agree to play by these rules or face punishment up to the discretion of the referees and/or higher ranks of this league. You also agree to the conditions that your manager has put into place for your contract such as position, wage, etc. By accepting this contract you acknowledge this agreement."
     )
 
-    # Send embed
     message = await contractchannel.send(embed=embed)
 
-    # Add reaction
     await message.add_reaction("✅")
 
-    # Wait for player reaction
     def check(reaction, reactor):
         return (
             reaction.message.id == message.id
@@ -127,6 +124,7 @@ async def contract(interaction: discord.Interaction, team: str, user: discord.Me
         await contractchannel.send(f"{user.mention} didn't accept the contract in time.")
     else:
         await contractchannel.send(f"{user.mention} has accepted the contract!")
+        await user.add_roles(team)
 
 @bot.tree.command(name="freeagency")
 @app_commands.describe(
