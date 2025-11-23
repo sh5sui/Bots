@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import logging
 from discord import app_commands
+from discord import guild
 
 load_dotenv()
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -28,7 +29,20 @@ async def on_ready():
 # TODO:: Give this command functionality to fetch server info as an embed.
 @bot.tree.command(name="serverinfo")
 async def serverinfo(interaction: discord.Interaction):
-    await interaction.response.send_message("This command is under development.")
+    
+    guild = interaction.guild
+    user_id = interaction.user.id
+
+    embed = discord.Embed(title="Sever Information", color=discord.Color.purple())
+    embed.set_thumbnail(url=guild.icon.url)
+    embed.add_field(name="Requested By", value=f"<@{user_id}>")
+    embed.add_field(name="Server Name", value=guild.name)
+    embed.add_field(name="Server ID", value=guild.id)
+    embed.add_field(name="Members", value=guild.member_count)
+    embed.add_field(name="Owner", value=guild.owner)
+    embed.add_field(name="Creation Date", value=guild.created_at)
+
+    await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="links")
 async def links(interaction: discord.Interaction):
@@ -56,16 +70,6 @@ async def freeagency(interaction: discord.Interaction, position: str, region: st
     embed.add_field(name="Region", value=region)
 
     await freeagentchannel.send(embed=embed)
-
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send("Hello!")
-
-    await bot.process_commands(message)
 
 Token = os.getenv("Token")
 bot.run(Token, log_handler=handler)
