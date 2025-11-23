@@ -15,6 +15,12 @@ intents.presences = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+freeagentchannel_id = 1387870667411558561
+friendlieschannel_id = 1387782160697655409
+contractschannel_id = 1387870804225687764
+
+freeagentchannel = bot.get_channel(freeagentchannel_id)
+
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
@@ -28,6 +34,11 @@ async def serverinfo(interaction: discord.Interaction):
 @bot.tree.command(name="links")
 async def links(interaction: discord.Interaction):
     await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: Under Development\n*Others*: Coming soon")
+
+@bot.tree.command(name="freeagency")
+async def freeagency(interaction: discord.Interaction):
+    user_id = interaction.user.id
+    await freeagentchannel.send(f"<@{user_id}> is a free agent!")
 
 @bot.event
 async def on_message(message):
