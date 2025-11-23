@@ -74,7 +74,7 @@ async def links(interaction: discord.Interaction):
 async def purge(interaction: discord.Interaction, amount: int):
 
     if not interaction.user.guild_permissions.manage_messages:
-        await interaction.response.send_message("You don't have permission to run this command.")
+        await interaction.response.send_message("You don't have permission to run this command.", ephemeral=True)
         return
     
     deleted = await interaction.channel.purge(limit=amount)
