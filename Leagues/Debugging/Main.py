@@ -68,7 +68,7 @@ async def userinfo(interaction: discord.Interaction, user: discord.Member = None
 
 @bot.tree.command(name="links")
 async def links(interaction: discord.Interaction):
-    await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/4886147037/UFA-Universe\n*Others*: Coming soon")
+    await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/4886147037/UFA-Universe\n*Group*: https://www.roblox.com/groups/5947860/UFA-United-Football-Associations#!/about\n*Others*: https://discord.com/channels/836277409245298708/838124010016604212/1389739554105327627")
 
 @bot.tree.command(name="purge")
 async def purge(interaction: discord.Interaction, amount: int):
