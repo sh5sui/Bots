@@ -5,6 +5,7 @@ import os
 import logging
 from discord import app_commands
 from discord import guild
+import asyncio
 
 load_dotenv()
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -70,23 +71,62 @@ async def links(interaction: discord.Interaction):
     await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/4886147037/UFA-Universe\n*Others*: Coming soon")
 
 # TODO:: Add functionality to this command
+import asyncio
+
 @bot.tree.command(name="contract")
 @app_commands.describe(
     team="What team you want to sign them to"
 )
-async def contract(interaction: discord.Intereaction, team: str, user: discord.Member = None):
+async def contract(interaction: discord.Interaction, team: str, user: discord.Member = None):
+    if user is None:
+        await interaction.response.send_message("You must specify a player!", ephemeral=True)
+        return
+
     contractchannel = bot.get_channel(1387870804225687764)
     if contractchannel is None:
         await interaction.response.send_message("Contract's channel couldn't be found.", ephemeral=True)
         return
-    
-    user_id = interaction.user.id
 
-    await interaction.responce.send_message("Contract was sent to", f"<@{user}>")
+    manager = interaction.user
 
+    # Check if user has the Manager role
+    if not any(role.name in ["Manager", "Assistant Manager"] for role in manager.roles):
+        await interaction.response.send_message("You don't have permission to run this command.", ephemeral=True)
+        return
+
+    # Confirm to manager
+    await interaction.response.send_message(f"Contract was sent to {user.mention}!", ephemeral=True)
+
+    # Create embed
     embed = discord.Embed(title="Contract", color=discord.Color.green())
+    embed.add_field(name="Team", value=team)
+    embed.add_field(name="Manager", value=manager.mention)
+    embed.add_field(name="Player", value=user.mention)
+    embed.add_field(
+        name="Conditions",
+        value="By accepting this contract, you hereby accept the fair play rules of the UFA league and agree to play by these rules or face punishment up to the discretion of the referees and/or higher ranks of this league. You also agree to the conditions that your manager has put into place for your contract such as position, wage, etc. By accepting this contract you acknowledge this agreement."
+    )
 
-    await contractchannel.send(embed=embed)
+    # Send embed
+    message = await contractchannel.send(embed=embed)
+
+    # Add reaction
+    await message.add_reaction("✅")
+
+    # Wait for player reaction
+    def check(reaction, reactor):
+        return (
+            reaction.message.id == message.id
+            and str(reaction.emoji) == "✅"
+            and reactor.id == user.id
+        )
+
+    try:
+        reaction, reactor = await bot.wait_for("reaction_add", timeout=3600.0, check=check)
+    except asyncio.TimeoutError:
+        await contractchannel.send(f"{user.mention} didn't accept the contract in time.")
+    else:
+        await contractchannel.send(f"{user.mention} has accepted the contract!")
 
 @bot.tree.command(name="freeagency")
 @app_commands.describe(
