@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 import os
 import logging
@@ -12,23 +13,27 @@ intents.message_content = True
 intents.members = True
 intents.presences = True
 
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'logged in as {client.user}')
+    print(f'Logged in as {bot.user}')
+    await bot.tree.sync()
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
-
-@client.tree.command(name="serverinfo")
+# TODO:: Give this command functionality to fetch server info as an embed.
+@bot.tree.command(name="serverinfo")
 async def serverinfo(interaction: discord.Interaction):
     await interaction.response.send_message("This command is under development.")
 
-Token = os.getenv("Token", log_Handler=handler)
-client.run(Token)
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    if message.content.startswith('$hello'):
+        await message.channel.send("Hello!")
+
+    await bot.process_commands(message)
+
+Token = os.getenv("Token")
+bot.run(Token, log_handler=handler)
