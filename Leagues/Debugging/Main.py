@@ -27,7 +27,7 @@ roquick = RoQuick({
 
 @bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user}')
+    print(f'Connected as {bot.user}')
     await bot.tree.sync()
 
 @bot.event

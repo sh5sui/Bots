@@ -1,1 +1,212 @@
 [2025-11-23 23:15:36] [INFO    ] discord.client: logging in using static token
+[2025-11-23 23:15:38] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: e7d798bd3c18812945061a72ed9abba5).
+[2025-11-23 23:17:30] [ERROR   ] discord.app_commands.tree: Ignoring exception in command 'purge'
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sav\Downloads\Bots-1\Leagues\Debugging\Main.py", line 142, in purge
+    await interaction.response.send_message(f"Deleted {len(deleted)} messages.", ephemeral=True, delete_after=5)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\interactions.py", line 1051, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\webhook\async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\tree.py", line 1297, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'purge' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+[2025-11-23 23:17:59] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1432896365889060884 responded with 429. Retrying in 0.45 seconds.
+[2025-11-23 23:18:00] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1432312827862978672 responded with 429. Retrying in 0.32 seconds.
+[2025-11-23 23:18:01] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1432183886728925254 responded with 429. Retrying in 0.34 seconds.
+[2025-11-23 23:18:02] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1429930754992767059 responded with 429. Retrying in 0.54 seconds.
+[2025-11-23 23:18:03] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1429903454339465388 responded with 429. Retrying in 0.37 seconds.
+[2025-11-23 23:18:04] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1429810701379178578 responded with 429. Retrying in 0.51 seconds.
+[2025-11-23 23:18:05] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1429616033278464051 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:18:06] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1429497218842492988 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:18:07] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1428025710441660588 responded with 429. Retrying in 0.52 seconds.
+[2025-11-23 23:18:08] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1427759523283603579 responded with 429. Retrying in 0.43 seconds.
+[2025-11-23 23:18:10] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1427025552522346507 responded with 429. Retrying in 0.62 seconds.
+[2025-11-23 23:18:11] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1425610512904880219 responded with 429. Retrying in 0.49 seconds.
+[2025-11-23 23:18:12] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1424960717403983933 responded with 429. Retrying in 0.45 seconds.
+[2025-11-23 23:18:13] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1424754194291757186 responded with 429. Retrying in 0.46 seconds.
+[2025-11-23 23:18:14] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1424472601069355018 responded with 429. Retrying in 0.49 seconds.
+[2025-11-23 23:18:15] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1424462627660107867 responded with 429. Retrying in 0.49 seconds.
+[2025-11-23 23:18:16] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1424414012682010746 responded with 429. Retrying in 0.44 seconds.
+[2025-11-23 23:18:17] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1421914340839264327 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:18:18] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1421477462436483163 responded with 429. Retrying in 0.51 seconds.
+[2025-11-23 23:18:19] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1420609792556138608 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:18:20] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1419056088434872400 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:18:21] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1419022135250255953 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:18:22] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1418990566951358534 responded with 429. Retrying in 0.35 seconds.
+[2025-11-23 23:18:23] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1418885289572569128 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:18:24] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1417902547863343255 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:18:25] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1417256342011252787 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:18:26] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1416890278098243727 responded with 429. Retrying in 0.52 seconds.
+[2025-11-23 23:18:27] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1416847978668494939 responded with 429. Retrying in 0.49 seconds.
+[2025-11-23 23:18:28] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1415345900255056092 responded with 429. Retrying in 0.55 seconds.
+[2025-11-23 23:18:29] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1415105809154707579 responded with 429. Retrying in 0.55 seconds.
+[2025-11-23 23:20:29] [ERROR   ] discord.app_commands.tree: Ignoring exception in command 'purge'
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sav\Downloads\Bots-1\Leagues\Debugging\Main.py", line 141, in purge
+    deleted = await interaction.channel.purge(limit=amount)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\channel.py", line 715, in purge
+    return await discord.abc._purge_helper(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\abc.py", line 204, in _purge_helper
+    await ret[-1].delete()
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\message.py", line 1308, in delete
+    await self._state.http.delete_message(self.channel.id, self.id)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\http.py", line 769, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10008): Unknown Message
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\tree.py", line 1297, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'purge' raised an exception: NotFound: 404 Not Found (error code: 10008): Unknown Message
+[2025-11-23 23:20:30] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1413973065041318053 responded with 429. Retrying in 0.32 seconds.
+[2025-11-23 23:20:30] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1413058326346072166 responded with 429. Retrying in 0.61 seconds.
+[2025-11-23 23:20:31] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1411683858809749685 responded with 429. Retrying in 0.51 seconds.
+[2025-11-23 23:20:32] [ERROR   ] discord.app_commands.tree: Ignoring exception in command 'purge'
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sav\Downloads\Bots-1\Leagues\Debugging\Main.py", line 141, in purge
+    deleted = await interaction.channel.purge(limit=amount)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\channel.py", line 715, in purge
+    return await discord.abc._purge_helper(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\abc.py", line 204, in _purge_helper
+    await ret[-1].delete()
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\message.py", line 1308, in delete
+    await self._state.http.delete_message(self.channel.id, self.id)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\http.py", line 769, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10008): Unknown Message
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\tree.py", line 1297, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'purge' raised an exception: NotFound: 404 Not Found (error code: 10008): Unknown Message
+[2025-11-23 23:20:32] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1411074004592361483 responded with 429. Retrying in 0.56 seconds.
+[2025-11-23 23:20:33] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1410687281777348760 responded with 429. Retrying in 0.49 seconds.
+[2025-11-23 23:20:35] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1410663257705812102 responded with 429. Retrying in 0.38 seconds.
+[2025-11-23 23:20:35] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1410330865199747072 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:20:36] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1410281323976986686 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:20:37] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1409290603170369619 responded with 429. Retrying in 0.47 seconds.
+[2025-11-23 23:20:38] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1408289701986832414 responded with 429. Retrying in 0.46 seconds.
+[2025-11-23 23:20:39] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1406663403518562304 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:20:40] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1406561497634836530 responded with 429. Retrying in 0.43 seconds.
+[2025-11-23 23:20:42] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1405221344114774077 responded with 429. Retrying in 0.38 seconds.
+[2025-11-23 23:20:42] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1404959273389260850 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:20:43] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1404887921194045531 responded with 429. Retrying in 0.44 seconds.
+[2025-11-23 23:20:44] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1404828088294178926 responded with 429. Retrying in 0.47 seconds.
+[2025-11-23 23:20:45] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1404539557378261054 responded with 429. Retrying in 0.51 seconds.
+[2025-11-23 23:20:46] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1404278743555637278 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:20:48] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1404027252878082048 responded with 429. Retrying in 0.32 seconds.
+[2025-11-23 23:20:49] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1403634234056507496 responded with 429. Retrying in 0.33 seconds.
+[2025-11-23 23:20:49] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1401741105590042726 responded with 429. Retrying in 0.51 seconds.
+[2025-11-23 23:20:50] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1401535794799181884 responded with 429. Retrying in 0.46 seconds.
+[2025-11-23 23:20:51] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1401387000241721574 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:20:53] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1400747496099020943 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:20:54] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1400590655604133948 responded with 429. Retrying in 0.36 seconds.
+[2025-11-23 23:20:54] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1399768671177670788 responded with 429. Retrying in 0.46 seconds.
+[2025-11-23 23:20:55] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1397962423591505931 responded with 429. Retrying in 0.53 seconds.
+[2025-11-23 23:20:56] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1397410141371891745 responded with 429. Retrying in 0.52 seconds.
+[2025-11-23 23:20:57] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1397287543753412690 responded with 429. Retrying in 0.54 seconds.
+[2025-11-23 23:20:58] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1396821575793250365 responded with 429. Retrying in 0.42 seconds.
+[2025-11-23 23:21:00] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1396776984855711866 responded with 429. Retrying in 0.37 seconds.
+[2025-11-23 23:21:00] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1396030390778462220 responded with 429. Retrying in 0.47 seconds.
+[2025-11-23 23:21:02] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1395953033489420371 responded with 429. Retrying in 0.38 seconds.
+[2025-11-23 23:21:02] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1395920847084060793 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:21:03] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1395762866472226836 responded with 429. Retrying in 0.52 seconds.
+[2025-11-23 23:23:03] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1394106455841439776 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:23:04] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1394044435247005866 responded with 429. Retrying in 0.34 seconds.
+[2025-11-23 23:23:05] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1393824636726411366 responded with 429. Retrying in 0.45 seconds.
+[2025-11-23 23:23:06] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1393633710879801518 responded with 429. Retrying in 0.31 seconds.
+[2025-11-23 23:23:09] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1393350234754646087 responded with 429. Retrying in 0.31 seconds.
+[2025-11-23 23:23:10] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1392646495920197733 responded with 429. Retrying in 0.45 seconds.
+[2025-11-23 23:23:11] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1392474607159742537 responded with 429. Retrying in 0.51 seconds.
+[2025-11-23 23:23:12] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1392324935120326696 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:23:13] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1392227568538746901 responded with 429. Retrying in 0.54 seconds.
+[2025-11-23 23:23:14] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1392192895712235733 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:23:15] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1392035655105773669 responded with 429. Retrying in 0.45 seconds.
+[2025-11-23 23:23:16] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391902589410349278 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:23:17] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391830556110622731 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:23:18] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391825059651387563 responded with 429. Retrying in 0.41 seconds.
+[2025-11-23 23:23:19] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391739976210714624 responded with 429. Retrying in 0.34 seconds.
+[2025-11-23 23:23:20] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391581740690046996 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:23:21] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391575143809286305 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:23:22] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391528701895774239 responded with 429. Retrying in 0.52 seconds.
+[2025-11-23 23:23:23] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391503059817074799 responded with 429. Retrying in 0.45 seconds.
+[2025-11-23 23:23:24] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391446813751644201 responded with 429. Retrying in 0.57 seconds.
+[2025-11-23 23:23:25] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391423501050581003 responded with 429. Retrying in 0.55 seconds.
+[2025-11-23 23:23:26] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391334237449486437 responded with 429. Retrying in 0.56 seconds.
+[2025-11-23 23:23:27] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391294256789979228 responded with 429. Retrying in 0.48 seconds.
+[2025-11-23 23:23:28] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391188848184266814 responded with 429. Retrying in 0.49 seconds.
+[2025-11-23 23:23:29] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1391088723885555864 responded with 429. Retrying in 0.52 seconds.
+[2025-11-23 23:23:30] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1390994402843033600 responded with 429. Retrying in 0.43 seconds.
+[2025-11-23 23:23:31] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1390797466948993065 responded with 429. Retrying in 0.50 seconds.
+[2025-11-23 23:23:32] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1390789015375974534 responded with 429. Retrying in 0.41 seconds.
+[2025-11-23 23:23:33] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1390788393985642628 responded with 429. Retrying in 0.30 seconds.
+[2025-11-23 23:23:34] [WARNING ] discord.http: We are being rate limited. DELETE https://discord.com/api/v10/channels/1353832088390074450/messages/1390738171943456790 responded with 429. Retrying in 0.39 seconds.
+[2025-11-23 23:25:34] [ERROR   ] discord.app_commands.tree: Ignoring exception in command 'purge'
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sav\Downloads\Bots-1\Leagues\Debugging\Main.py", line 141, in purge
+    deleted = await interaction.channel.purge(limit=amount)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\channel.py", line 715, in purge
+    return await discord.abc._purge_helper(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\abc.py", line 204, in _purge_helper
+    await ret[-1].delete()
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\message.py", line 1308, in delete
+    await self._state.http.delete_message(self.channel.id, self.id)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\http.py", line 769, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10003): Unknown Channel
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\tree.py", line 1297, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sav\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'purge' raised an exception: NotFound: 404 Not Found (error code: 10003): Unknown Channel
