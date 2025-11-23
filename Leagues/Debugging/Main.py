@@ -81,6 +81,10 @@ async def contract(interaction: discord.Interaction, team: discord.Role = None, 
     if user is None:
         await interaction.response.send_message("You must specify a player!", ephemeral=True)
         return
+    
+    if team is None:
+        await interaction.response.send_message("You must specify a team!", ephemeral=True)
+        return
 
     contractchannel = bot.get_channel(1387870804225687764)
     if contractchannel is None:
