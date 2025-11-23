@@ -27,7 +27,7 @@ async def serverinfo(interaction: discord.Interaction):
 
 @bot.tree.command(name="links")
 async def links(interaction: discord.Interaction):
-    await interaction.response.send_message("Discord: https://discord.gg/ufa-united-football-association-836277409245298708\nPitch: Under Development\nOthers: Coming soon")
+    await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: Under Development\n*Others*: Coming soon")
 
 @bot.event
 async def on_message(message):
