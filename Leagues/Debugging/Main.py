@@ -41,7 +41,6 @@ async def on_member_join(member):
     else:
         print(f"Community role not found!")
 
-# TODO:: Give this command functionality to fetch server info as an embed.
 @bot.tree.command(name="serverinfo")
 async def serverinfo(interaction: discord.Interaction):
     
@@ -141,7 +140,6 @@ async def purge(interaction: discord.Interaction, amount: int):
     deleted = await interaction.channel.purge(limit=amount)
     await interaction.response.send_message(f"Deleted {len(deleted)} messages.", ephemeral=True, delete_after=5)
 
-# TODO:: Add functionality to this command
 @bot.tree.command(name="contract")
 @app_commands.describe(
     team="What team you want to sign them to"
