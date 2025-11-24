@@ -78,7 +78,7 @@ async def commands(interaction: discord.Interaction):
     await interaction.respond.sent_message(embed=embed)
 
 @bot.tree.command(name="accept")
-async def accept(interaction: discord.Interaction, user_id: int):
+async def accept(interaction: discord.Interaction, user: discord.member, user_id: int):
     await interaction.response.defer(ephemeral=False)
 
     user = interaction.user
@@ -95,6 +95,7 @@ async def accept(interaction: discord.Interaction, user_id: int):
 
         embed = discord.Embed(title="Group Request", color=discord.Color.green())
         embed.set_thumbnail(url=guild.icon.url)
+        embed.add_field(name="Member", value=user)
         embed.add_field(name="Staff", value=f"<@{admin_id}>")
         embed.add_field(name="Response", value=f"In relation to a group request created by {user_id}, your group request was accepted.")
 
