@@ -224,4 +224,4 @@ async def freeagency(interaction: discord.Interaction, position: str, region: st
     await freeagentchannel.send(embed=embed)
 
 Token = os.getenv("Token")
-bot.run(Token, log_handler=handler)
+bot.run(Token, log_handler=None)
