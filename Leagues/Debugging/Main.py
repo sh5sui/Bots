@@ -78,7 +78,7 @@ async def commands(interaction: discord.Interaction):
     await interaction.respond.sent_message(embed=embed)
 
 @bot.tree.command(name="accept")
-async def accept(interaction: discord.Interaction, user: discord.member, user_id: int):
+async def accept(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None):
     await interaction.response.defer(ephemeral=False)
 
     user = interaction.user
