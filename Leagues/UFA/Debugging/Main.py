@@ -77,6 +77,36 @@ async def commands(interaction: discord.Interaction):
 
     await interaction.respond.sent_message(embed=embed)
 
+@bot.tree.command(name="decline")
+async def decline(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None, reason: str = None):
+    await interaction.response.defer(ephemeral=False)
+
+    user = interaction.user
+    if not any(role.name == "Whitelisted" for role in user.roles):
+        await interaction.followup.send("You don't have permission to run this command.", ephemeral=True)
+        return
+    
+    group_id = 5947860
+    admin_id = interaction.user.id
+    guild = interaction.guild
+
+    try:
+        result = roquick.decline_join_request(group_id, user_id)
+
+        embed = discord.Embed(title="Group Request", color=discord.Color.red())
+        embed.set_thumbnail(url=guild.icon.url)
+        embed.add_field(name="Member", value=f"<@{member.id}>")
+        embed.add_field(name="Staff", value=f"<@{admin_id}>")
+        embed.add_field(name="Response", value=f"In relation to a group request created by {user_id}, your group request was declined.")
+        embed.add_field(name="Reason", value=reason)
+
+        await interaction.followup.send(embed=embed, ephemeral=False)
+
+    except RoQuickError as e:
+        await interaction.follwup.send(f"API Error {e.message}", ephemeral=True)
+    except Exception as e:
+        await interaction.followup.send(f"Unexpected Error: {e}", ephemeral=True)
+
 @bot.tree.command(name="accept")
 async def accept(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None):
     await interaction.response.defer(ephemeral=False)
@@ -95,7 +125,7 @@ async def accept(interaction: discord.Interaction, member: discord.Member = None
 
         embed = discord.Embed(title="Group Request", color=discord.Color.green())
         embed.set_thumbnail(url=guild.icon.url)
-        embed.add_field(name="Member", value=user)
+        embed.add_field(name="Member", value=f"<@{member.id}>")
         embed.add_field(name="Staff", value=f"<@{admin_id}>")
         embed.add_field(name="Response", value=f"In relation to a group request created by {user_id}, your group request was accepted.")
 
