@@ -93,7 +93,7 @@ async def group_request(interaction: discord.Interaction, user: discord.Member =
     embed.add_field(name="Join Date", value=join_date)
 
     await channelid.send(embed=embed)
-    await interaction.followup.send(f"Group request send in <#1442294590689509576>", ephemeral=False)
+    await interaction.followup.send(f"Group request sent in <#1442294590689509576>", ephemeral=False)
 
 @bot.tree.command(name="decline")
 async def decline(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None, reason: str = None):
