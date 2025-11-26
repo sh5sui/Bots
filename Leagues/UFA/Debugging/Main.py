@@ -77,6 +77,24 @@ async def commands(interaction: discord.Interaction):
 
     await interaction.respond.sent_message(embed=embed)
 
+@bot.tree.command(name="group_request")
+async def group_request(interaction: discord.Interaction, user: discord.Member = None, profile_link: str = None, experience: str = None, join_date: str = None):
+    await interaction.response.defer(ephemeral=False)
+
+    member = interaction.user
+    guild = interaction.guild
+    channelid = bot.get_channel(1442294590689509576)
+
+    embed = discord.Embed(title="Group Request", color=discord.Color.blue())
+    embed.set_thumbnail(url=guild.icon.url)
+    embed.add_field(name="Member", value=member)
+    embed.add_field(name="Profile URL", value=profile_link)
+    embed.add_field(name="Experience", value=experience)
+    embed.add_field(name="Join Date", value=join_date)
+
+    await channelid.send(embed=embed)
+    await interaction.followup.send(f"Group request send in {channelid}", ephemeral=False)
+
 @bot.tree.command(name="decline")
 async def decline(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None, reason: str = None):
     await interaction.response.defer(ephemeral=False)
