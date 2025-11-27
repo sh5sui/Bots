@@ -150,7 +150,7 @@ async def accept(interaction: discord.Interaction, member: discord.Member = None
         await interaction.followup.send(embed=embed, ephemeral=False)
 
     except RoQuickError as e:
-        await interaction.followup.send(f"API Error: {e.message}", ephemeral=True)
+        await interaction.followup.send(f"API Error: {e.message} No group request found.", ephemeral=True)
     except Exception as e:
         await interaction.followup.send(f"Unexpected Error: {e}", ephemeral=True)
 
