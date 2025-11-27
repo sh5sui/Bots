@@ -109,7 +109,7 @@ async def decline(interaction: discord.Interaction, member: discord.Member = Non
     guild = interaction.guild
 
     try:
-        result = roquick.decline_join_request(group_id, user_id)
+        result = await roquick.decline_join_request(group_id, user_id)
 
         embed = discord.Embed(title="Group Request", color=discord.Color.red())
         embed.set_thumbnail(url=guild.icon.url)
@@ -139,7 +139,7 @@ async def accept(interaction: discord.Interaction, member: discord.Member = None
     guild = interaction.guild
 
     try:
-        result = roquick.accept_join_request(group_id, user_id)
+        result = await roquick.accept_join_request(group_id, user_id)
 
         embed = discord.Embed(title="Group Request", color=discord.Color.green())
         embed.set_thumbnail(url=guild.icon.url)
