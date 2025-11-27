@@ -41,7 +41,7 @@ async def on_member_join(member):
     else:
         print(f"Community role not found!")
 
-@bot.tree.command(name="serverinfo")
+@bot.tree.command(name="serverinfo", description="Displays all available information about the server")
 async def serverinfo(interaction: discord.Interaction):
     
     guild = interaction.guild
@@ -58,7 +58,7 @@ async def serverinfo(interaction: discord.Interaction):
 
     await interaction.response.send_message(embed=embed)
 
-@bot.tree.command(name="commands")
+@bot.tree.command(name="commands", description="See all available commands")
 async def commands(interaction: discord.Interaction):
 
     user_id = interaction.user.id
@@ -74,10 +74,11 @@ async def commands(interaction: discord.Interaction):
     embed.add_field(name="Purge", value="Deletes a certain amount of messages in bulk.", inline=True)
     embed.add_field(name="Contract", value="Sends a contract to a certain person", inline=True)
     embed.add_field(name="Accept", value="Accepts a person into the roblox group.", inline=True)
+    embed.add_field(name="Decline", value="Declines a person from joining the roblox group.", inline=True)
 
     await interaction.respond.sent_message(embed=embed)
 
-@bot.tree.command(name="group_request")
+@bot.tree.command(name="group_request", description="Creates a group request")
 async def group_request(interaction: discord.Interaction, user: discord.Member = None, profile_link: str = None, experience: str = None, join_date: str = None):
     await interaction.response.defer(ephemeral=False)
 
@@ -95,7 +96,7 @@ async def group_request(interaction: discord.Interaction, user: discord.Member =
     await channelid.send(embed=embed)
     await interaction.followup.send(f"Group request sent in <#1442294590689509576>", ephemeral=False)
 
-@bot.tree.command(name="decline")
+@bot.tree.command(name="decline", description="Declines a person from joining the roblox group")
 async def decline(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None, reason: str = None):
     await interaction.response.defer(ephemeral=False)
 
@@ -125,7 +126,7 @@ async def decline(interaction: discord.Interaction, member: discord.Member = Non
     except Exception as e:
         await interaction.followup.send(f"Unexpected Error: {e}", ephemeral=True)
 
-@bot.tree.command(name="accept")
+@bot.tree.command(name="accept", description="Accepts a player into the roblox group If they have a pending group request")
 async def accept(interaction: discord.Interaction, member: discord.Member = None, user_id: int = None):
     await interaction.response.defer(ephemeral=False)
 
@@ -154,7 +155,7 @@ async def accept(interaction: discord.Interaction, member: discord.Member = None
     except Exception as e:
         await interaction.followup.send(f"Unexpected Error: {e}", ephemeral=True)
 
-@bot.tree.command(name="userinfo")
+@bot.tree.command(name="userinfo", description="Displays information for a certain user")
 async def userinfo(interaction: discord.Interaction, user: discord.Member = None):
     if user is None:
         await interaction.response.send_message("User cannot be empty!", ephemeral=True)
@@ -175,11 +176,11 @@ async def userinfo(interaction: discord.Interaction, user: discord.Member = None
 
     await interaction.response.send_message(embed=embed)
 
-@bot.tree.command(name="links")
+@bot.tree.command(name="links", description="Displays all available links for UFA")
 async def links(interaction: discord.Interaction):
     await interaction.response.send_message("*Discord*: https://discord.gg/ufa-united-football-association-836277409245298708\n*Pitch*: https://www.roblox.com/games/4886147037/UFA-Universe\n*Group*: https://www.roblox.com/groups/5947860/UFA-United-Football-Associations#!/about\n*Others*: https://discord.com/channels/836277409245298708/838124010016604212/1389739554105327627")
 
-@bot.tree.command(name="purge")
+@bot.tree.command(name="purge", description="Deletes messages in bulk")
 async def purge(interaction: discord.Interaction, amount: int):
 
     if not interaction.user.guild_permissions.manage_messages:
@@ -189,7 +190,7 @@ async def purge(interaction: discord.Interaction, amount: int):
     deleted = await interaction.channel.purge(limit=amount)
     await interaction.response.send_message(f"Deleted {len(deleted)} messages.", ephemeral=True, delete_after=5)
 
-@bot.tree.command(name="contract")
+@bot.tree.command(name="contract", description="Sends a contract to a player")
 @app_commands.describe(
     team="What team you want to sign them to"
 )
@@ -249,7 +250,7 @@ async def contract(interaction: discord.Interaction, team: discord.Role = None, 
         await contractchannel.send(f"{user.mention} has accepted the contract!")
         await user.add_roles(team)
 
-@bot.tree.command(name="freeagency")
+@bot.tree.command(name="freeagency", description="Sends a message in the free agency channel for you")
 @app_commands.describe(
     position="Your position",
     region="Your region"
